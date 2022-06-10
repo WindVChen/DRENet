@@ -12,7 +12,7 @@ If you encounter any question, please feel free to contact us. You can create an
 
 ## Updates
 
-***06/09/2022***
+***06/10/2022***
  
 The code cleanup is finished and the complete codes are provided, also the weights of our model for Levir-Ship dataset.
 
