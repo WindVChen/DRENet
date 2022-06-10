@@ -6,7 +6,7 @@
 
 ## Share us a :star: if this repo does help
 
-This repo is the official implementation of the DRENet in "A Degraded Reconstruction Enhancement-based Method for Tiny Ship Detection in Remote Sensing Images with A New Large-scale Dataset". ***(Accepted by TGRS 2022)***
+This repo is the official implementation of the DRENet in "A Degraded Reconstruction Enhancement-based Method for Tiny Ship Detection in Remote Sensing Images with A New Large-scale Dataset" [[IEEE](https://ieeexplore.ieee.org/document/9791363) | Lab Server]. ***(Accepted by TGRS 2022)***
 
 If you encounter any question, please feel free to contact us. You can create an issue or just send email to me windvchen@gmail.com. Also welcome for any idea exchange and discussion.
 
@@ -14,7 +14,7 @@ If you encounter any question, please feel free to contact us. You can create an
 
 ***06/10/2022***
  
-The code cleanup is finished and the complete codes are provided, also the weights of our model for Levir-Ship dataset.
+The code cleanup is finished and the complete codes are provided, also the weights of our model on Levir-Ship dataset.
 
 ***06/06/2022***
 
@@ -51,13 +51,13 @@ We focus on **tiny ship detection** task in **medium-resolution (MR, about 16m/p
 | SSD | 24.39 | 175.2 | 52.6 | 25 | 
 | FasterRCNN | 136.70 | 299.2 | 70.8 | 10 | 
 | EfficientDet-D0 | **3.84** | **4.6** | 71.3 | 32 | 
-| EfficientDet-D2 | 8.01 | 20.0 | <u>80.9</u> | 21 | 
+| EfficientDet-D2 | 8.01 | 20.0 | <ins>80.9</ins> | 21 | 
 | FCOS | 5.92 | 51.8 | 75.5 | 37 | 
 | CenterNet | 191.24 | 584.6 | 77.7 | 25 | 
 | HSFNet | 157.59 | 538.1 | 73.6 | 7 | 
 | ImYOLOv3 | 62.86 | 101.9 | 72.6 | 51 | 
 | MaskRCNN+DFR+RFE | 24.99 | 237.8 | 76.2 | 6 | 
-| **DRENet** | <u>4.79</u> | <u>8.3</u> | **82.4** [[Google Drive](https://drive.google.com/file/d/1ApAejwSNYQDvROM1yRtltQOGdYAwYyF3/view?usp=sharing) <br /> &#124; [Baidu Pan](https://pan.baidu.com/s/1tBxhGOhmxc-L5ioHSqSjEQ) (code:x710)]  | <u>85</u>|
+| **DRENet** | <ins>4.79</ins> | <ins>8.3</ins> | **82.4** [[Google Drive](https://drive.google.com/file/d/1ApAejwSNYQDvROM1yRtltQOGdYAwYyF3/view?usp=sharing) <br /> &#124; [Baidu Pan](https://pan.baidu.com/s/1tBxhGOhmxc-L5ioHSqSjEQ) (code:x710)]  | <ins>85</ins>|
 
 
 ## Preliminaries
@@ -103,11 +103,12 @@ To train our `DRENet`, run:
 python train.py --cfg "./models/DRENet.yaml" --epochs 1000 --workers 8 --batch-size 16 --device 0 --project "./Levir-Ship" --data "./data/ship.yaml"
 ```
 **Parameters Description**
-- `cfg`: You can change it to use different network structures. More structure configurations can be found in `models` directory, where we provide the baseline YOLOv5s, and the ablation structures of DRENet. You can try them if you are interested
+- `cfg`: You can change it to use different network structures. More structure configurations can be found in [models](models) directory, where we provide the baseline YOLOv5s, and the ablation structures of DRENet. You can try them if you are interested
 - `epochs`: A longer training time is suggested, and 1,000 epochs are enough.
 - `project`: The path where you want to save your experiments. Also the name of the project in wandb.
 
 **Others**
+
 The current codes use **fixed weight balance**, which can also achieve a good result.
 
 If you want to make use of **automatic weight balance**, please search the key word `weightOptimizer` in [train.py](train.py) and uncomment the code lines, also the code lines with the key word `ForAuto` in [loss.py](utils/loss.py) be uncommented and the other lines be commented out.
