@@ -1,6 +1,6 @@
 # DRENet: Fast and Accurate Tiny Ship detection Method
 
-![visitors](https://visitor-badge.glitch.me/badge?page_id=windvchen.drenet.visitor)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=windvchen.drenet.visitor_reset)
 ![GitHub stars](https://badgen.net/github/stars/windvchen/DRENet)
 [![](https://img.shields.io/badge/license-GPL--3.0-brightgreen)](#License)
 
