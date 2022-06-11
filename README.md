@@ -14,7 +14,7 @@ If you encounter any question, please feel free to contact us. You can create an
 
 ***06/10/2022***
  
-The code cleanup is finished and the complete codes are provided, also the weights of our model on Levir-Ship dataset.
+The code cleanup is finished and the complete codes are provided, also the weights of our model on LEVIR-Ship dataset.
 
 ***06/06/2022***
 
@@ -42,7 +42,7 @@ We focus on **tiny ship detection** task in **medium-resolution (MR, about 16m/p
  For the task, we propose an effective **Degraded Reconstruction Enhancement Network (DRENet)**, where a degraded reconstruction enhancer is designed to learn to regress an object-aware blurred version of the input image. Our method achieves both **great effectiveness and efficiency**, and outperforms many recent methods.
 
 ## Results and Trained Model
-### Models trained on Levir-Ship dataset 
+### Models trained on LEVIR-Ship dataset 
 | Methods | Params(M) |FLOPs(G) | AP | FPS |
 |:---|:---:|:---:|:---:| :---:|
 | YOLOv3 | 61.52 | 99.2 | 69.9 | 61 |
@@ -61,7 +61,7 @@ We focus on **tiny ship detection** task in **medium-resolution (MR, about 16m/p
 
 
 ## Preliminaries
-Please at first download dataset [Levir-Ship](https://github.com/WindVChen/Levir-Ship), then prepare the dataset as the following structure:
+Please at first download dataset [LEVIR-Ship](https://github.com/WindVChen/LEVIR-Ship), then prepare the dataset as the following structure:
 ```
 ├── train
         ├── images
@@ -80,7 +80,7 @@ Please at first download dataset [Levir-Ship](https://github.com/WindVChen/Levir
 ├── val
 ├── test
 ```
-Note that apart from the images and labels in Levir-Ship dataset, you should also generate the **degraded images**, which are the supervision of the enhancer (see details in our paper). Here, we provide [DegradeGenerate.py](DegradeGenerate.py) to easily generate the degraded images.
+Note that apart from the images and labels in LEVIR-Ship dataset, you should also generate the **degraded images**, which are the supervision of the enhancer (see details in our paper). Here, we provide [DegradeGenerate.py](DegradeGenerate.py) to easily generate the degraded images.
 
 After preparing the dataset as above, change the paths in [ship.yaml](data/ship.yaml).
 
@@ -100,7 +100,7 @@ After preparing the dataset as above, change the paths in [ship.yaml](data/ship.
 ### Train Process
 To train our `DRENet`, run:
 ```
-python train.py --cfg "./models/DRENet.yaml" --epochs 1000 --workers 8 --batch-size 16 --device 0 --project "./Levir-Ship" --data "./data/ship.yaml"
+python train.py --cfg "./models/DRENet.yaml" --epochs 1000 --workers 8 --batch-size 16 --device 0 --project "./LEVIR-Ship" --data "./data/ship.yaml"
 ```
 **Parameters Description**
 - `cfg`: You can change it to use different network structures. More structure configurations can be found in [models](models) directory, where we provide the baseline YOLOv5s, and the ablation structures of DRENet. You can try them if you are interested
@@ -115,7 +115,7 @@ If you want to make use of **automatic weight balance**, please search the key w
 
 ### Test Process
 
-To test our `DRENet`, you should first train the network or download [our provided weights](#Models-trained-on-Levir-Ship-dataset), then run:
+To test our `DRENet`, you should first train the network or download [our provided weights](#Models-trained-on-LEVIR-Ship-dataset), then run:
 ```
 python test.py --weights "./DRENet.pt" --project "runs/test" --device 0 --batch-size 16 --data "./data/ship.yaml"
 ```
