@@ -84,6 +84,8 @@ Note that apart from the images and labels in LEVIR-Ship dataset, you should als
 
 After preparing the dataset as above, change the paths in [ship.yaml](data/ship.yaml).
 
+***(The partitioned dataset, including the degraded images, can all be accessed [here](https://github.com/WindVChen/LEVIR-Ship))***
+
 ## Environments
 
 - Windows/Linux Support
