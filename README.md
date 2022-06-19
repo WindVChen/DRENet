@@ -132,9 +132,9 @@ If you find this paper useful in your research, please consider citing:
   journal={IEEE Transactions on Geoscience and Remote Sensing},
   title={A Degraded Reconstruction Enhancement-based Method for Tiny Ship Detection in Remote Sensing Images with A New Large-scale Dataset},
   year={2022},
-  volume={},
+  volume={60},
   number={},
-  pages={1-1},
+  pages={1-14},
   doi={10.1109/TGRS.2022.3180894}}
 ```
 
