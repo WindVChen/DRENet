@@ -121,7 +121,7 @@ To test our `DRENet`, you should first train the network or download [our provid
 ```
 python test.py --weights "./DRENet.pt" --project "runs/test" --device 0 --batch-size 16 --data "./data/ship.yaml"
 ```
-You can set how many detected results to plot by changing the value of `plot_batch_num` in [test.py](test.py).
+You can set how many detected results to plot by changing the value of `plot_batch_num` in [test.py](test.py). Also ensure that you have changed the val path in [ship.yaml](data/ship.yaml) into your test path.
 
 
 ## Citation
