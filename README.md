@@ -13,6 +13,7 @@ If you encounter any question, please feel free to contact us. You can create an
 ## Updates
 
 ***11/19/2022***
+
 We have improved the previous codes, and the current repository support directly detect the images without generating degraded images, which correspond to the file **detect.py**.
 
 ***06/10/2022***
