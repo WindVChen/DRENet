@@ -6,11 +6,14 @@
 
 ## Share us a :star: if this repo does help
 
-This repo is the official implementation of the DRENet in "A Degraded Reconstruction Enhancement-based Method for Tiny Ship Detection in Remote Sensing Images with A New Large-scale Dataset" [[IEEE](https://ieeexplore.ieee.org/document/9791363) | [Lab Server](http://levir.buaa.edu.cn/publications/DRENet.pdf)]. ***(Accepted by TGRS 2022)***
+This repo is the official implementation of the DRENet in "A Degraded Reconstruction Enhancement-based Method for Tiny Ship Detection in Remote Sensing Images with A New Large-scale Dataset". The paper can be accessed in [[IEEE](https://ieeexplore.ieee.org/document/9791363) | [Lab Server](http://levir.buaa.edu.cn/publications/DRENet.pdf) | [ResearchGate](https://www.researchgate.net/profile/Keyan-Chen-6/publication/361178478_A_Degraded_Reconstruction_Enhancement-based_Method_for_Tiny_Ship_Detection_in_Remote_Sensing_Images_with_A_New_Large-scale_Dataset/links/62f47d69b8dc8b4403d4ce5e/A-Degraded-Reconstruction-Enhancement-Based-Method-for-Tiny-Ship-Detection-in-Remote-Sensing-Images-With-a-New-Large-Scale-Dataset.pdf)]. ***(Accepted by TGRS 2022)***
 
 If you encounter any question, please feel free to contact us. You can create an issue or just send email to me windvchen@gmail.com. Also welcome for any idea exchange and discussion.
 
 ## Updates
+
+***11/19/2022***
+We have improved the previous codes, and the current repository support directly detect the images without generating degraded images, which correspond to the file **detect.py**.
 
 ***06/10/2022***
  
@@ -29,7 +32,8 @@ We will finish the code cleanup within a week, and make both the code and datase
 - [Environments](#Environments)
 - [Run Details](#Run-Details)
 	- [Train Process](#Train-Process)
-	- [Test Process](#Test-Process)
+	- [Valid Process](#Valid-Process)
+	- [Detect Process](#Detect-Process)
 	- [Visualization](#Visualization)
 - [Citation](#Citation)
 - [License](#License)
@@ -115,13 +119,22 @@ The current codes use **fixed weight balance**, which can also achieve a good re
 
 If you want to make use of **automatic weight balance**, please search the key word `weightOptimizer` in [train.py](train.py) and uncomment the code lines, also the code lines with the key word `ForAuto` in [loss.py](utils/loss.py) be uncommented and the other lines be commented out.
 
-### Test Process
+### Valid Process
 
-To test our `DRENet`, you should first train the network or download [our provided weights](#Models-trained-on-LEVIR-Ship-dataset), then run:
+To evaluate our `DRENet`, you should first train the network or download [our provided weights](#Models-trained-on-LEVIR-Ship-dataset), then run:
 ```
 python test.py --weights "./DRENet.pt" --project "runs/test" --device 0 --batch-size 16 --data "./data/ship.yaml"
 ```
-You can set how many detected results to plot by changing the value of `plot_batch_num` in [test.py](test.py). Also ensure that you have changed the val path in [ship.yaml](data/ship.yaml) into your test path.
+You can set how many detected results to plot by changing the value of `plot_batch_num` in [test.py](test.py). Also ensure that you have changed the val path in [ship.yaml](data/ship.yaml) into your test path. 
+
+Please ensure that there are corresponding degraded images in the **degrade** folder. (See [#issue 4](https://github.com/WindVChen/DRENet/issues/4) for more details.)
+
+### Detect Process
+To directly output the detect results **without the need of the degraded images**, please run the following command:
+```
+python detect.py --weights "./DRENet.pt" --source "images/" --device 0
+```
+where "--source" is the path that the images need detection in.
 
 
 ## Citation
