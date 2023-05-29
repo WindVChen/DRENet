@@ -132,6 +132,14 @@ class BottleneckResAtnMHSA(nn.Module):
         content_content = torch.bmm(q.permute(0, 2, 1), k)
 
         content_position = (self.rel_h + self.rel_w).view(1, C, -1).permute(0, 2, 1)
+
+        # If you want to use resolution-agnostic positional encoding, you can uncomment the following lines.
+        # See details in https://github.com/WindVChen/DRENet/issues/10.
+        # Note that the performance of this resolution-agnostic positional encoding is not tested.
+        # content_position = (self.rel_h + self.rel_w)
+        # content_position = nn.functional.interpolate(content_position, (int(content_content.shape[-1]**0.5), int(content_content.shape[-1]**0.5)), mode='bilinear')
+        # content_position = content_position.view(1, C, -1).permute(0, 2, 1)
+
         content_position = torch.matmul(content_position, q)
 
         energy = content_content + content_position
