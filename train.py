@@ -106,6 +106,12 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
             pg0.append(v.weight)  # no decay
         elif hasattr(v, 'weight') and isinstance(v.weight, nn.Parameter):
             pg1.append(v.weight)  # apply decay
+        elif hasattr(v, 'rel_h') and isinstance(v.rel_h, nn.Parameter):
+            pg2.append(v.rel_h)  # For C3ResAtnMHSA positional encoding
+            pg2.append(v.rel_w)  # For C3ResAtnMHSA positional encoding
+        """the following parameters sometimes make the training unstable, you can choose to freeze them"""
+        # elif hasattr(v, 'factor') and isinstance(v.factor, nn.Parameter):
+        #     pg2.append(v.factor)  # For ConcatFusionFactor
 
     if opt.adam:
         optimizer = optim.Adam(pg0, lr=hyp['lr0'], betas=(hyp['momentum'], 0.999))  # adjust beta1 to momentum
