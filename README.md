@@ -12,6 +12,10 @@ If you encounter any question, please feel free to contact us. You can create an
 
 ## Updates
 
+***05/30/2023***
+
+Thanks for the discussions in [#10](https://github.com/WindVChen/DRENet/issues/10). The current code now supports processing different resolutions without manually modifying the yaml configurations. To achieve this, you can comment out L139-141 in [common.py](./models/common.py). (Note that this feature has not well been tested, if there is a drop in performance, you can get back to the manual modification mentioned in [#4](https://github.com/WindVChen/DRENet/issues/4)).
+
 ***11/19/2022***
 
 We have improved the previous codes, and the current repository support directly detect the images without generating degraded images, which correspond to the file **detect.py**.
